@@ -182,26 +182,27 @@ int main() {
                         {
                             printf("New name:(Maximum 25 letters)\t");
                             //digita o novo nome da compania
-
-                            fgets(company[numberAccount].name,26,stdin);
+                            char changeName[26];
+                            fgets(changeName,26,stdin);
 
                             for (int i = 0; i < sizeCompany; i++)
                             {
                                 // se o nome não alterar
-                                 if (strcmp(company[numberAccount].name,company[i].name)==0 && (i == numberAccount))
+                                 if (strcmp(changeName,company[i].name)==0 && (i == numberAccount))
                                 {
+                                
                                     break;
                                 }
                                
-                                else if (strcmp(company[numberAccount].name,company[i].name)==0)
+                                else if (strcmp(changeName,company[i].name)==0)
                                 {
                                 printf("Nickname already exists, please, type other:  ");
-                                fgets(company[numberAccount].name,26,stdin);
-                                getchar();
+                                fgets(changeName,26,stdin);
                                  i=-1;
                                 }
                 
                              }
+                             strcpy(company[numberAccount].name,changeName);
 
                         }
 
@@ -223,6 +224,8 @@ int main() {
                                 }
                 
                             } while (strcmp(company[numberAccount].password,confirmPassowrd)!=0);
+                            changePassword(company[numberAccount].password,company[numberAccount].secretPassword);
+                            
                         }
 
                         //escreva o endereço
